@@ -1,4 +1,5 @@
-import { Container, Typography, Box, Stack } from "@mui/material";
+import { Container, Box, Stack, Typography } from "@mui/material";
+import { Header, Paragraph } from "./App";
 
 const ExperienceCard = ({ title }: any) => (
     <Box
@@ -41,36 +42,17 @@ const About = () => {
                 color: 'white',
             }}
         >
-            <Typography
-                variant="h2"
-                sx={{
-                    mb: 4,
-                    textAlign: 'center',
-                    '& span': {
-                        color: 'primary.main',
-                    }
-                }}
-            >
+            <Header>
                 About <span>Me</span>
-            </Typography>
+            </Header>
 
-            <Typography
-                variant="h6"
-                sx={{
-                    mb: 6,
-                    lineHeight: 1.8,
-                    maxWidth: '1000px',
-                    mx: 'auto',
-                    textAlign: 'center',
-                    color: 'rgba(255, 255, 255, 0.9)',
-                }}
-            >
+            <Paragraph>
                 As a passionate Frontend Developer, I bring ideas to life through cutting-edge web technologies.
                 My expertise lies in crafting performant applications using React, Next.js, and Redux, JavaScript, TypeScript, HTML, and CSS with a
                 strong focus on delivering exceptional user experiences. Led development of enterprise-level applications utilizing React and Next.js.
                 Specialized in building high-performance web applications with a focus on SEO optimization and modern deployment practices. Passionate about mentoring junior
                 developers and fostering a collaborative team environment.
-            </Typography>
+            </Paragraph>
 
             <Stack
                 direction={{ xs: 'column', sm: 'row' }}

@@ -1,5 +1,92 @@
-import { Container, Typography, Box, Stack } from "@mui/material";
+import { Container, Box, Stack, Typography, Grid } from "@mui/material";
+import { Header } from "./App";
 
+const TechBadges = () => {
+    const badges = [
+        { name: "HTML5", logo: "src/assets/html.png" },
+        { name: "CSS3", logo: "src/assets/css.png" },
+        { name: "JavaScript", logo: "src/assets/js.png" },
+        { name: "TypeScript", logo: "src/assets/ts.jpg" },
+        { name: "React", logo: "src/assets/React-icon.svg.png" },
+        { name: "Redux", logo: "src/assets/redux.png" },
+        { name: "Git", logo: "src/assets/git.png" },
+    ];
+    return (
+        <Box sx={{ bgcolor: '#011627', py: 4 }}>
+            <Typography
+                variant="h3"
+                sx={{
+                    color: 'white',
+                    textAlign: 'center',
+                    fontSize: '2rem',
+                    fontWeight: 600,
+                    mb: 4
+                }}
+            >
+                Tech Stack
+            </Typography>
+            <Grid
+                container
+                spacing={3}
+                justifyContent="center"
+                sx={{
+                    maxWidth: '1000px',
+                    mx: 'auto',
+                    px: { xs: 2, md: 0 }
+                }}
+            >
+                {badges.map((badge, index) => (
+                    <Grid item key={index} xs={4} sm={3} md={2}>
+                        <Box
+                            sx={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                                gap: 1
+                            }}
+                        >
+                            <Box
+                                sx={{
+                                    width: '80px',
+                                    height: '80px',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    transition: 'transform 0.3s ease',
+                                    backgroundColor: '#ffffff',
+                                    borderRadius: '8px',
+                                    padding: '12px',
+                                    '&:hover': {
+                                        transform: 'scale(1.1)',
+                                    }
+                                }}
+                            >
+                                <img
+                                    src={badge.logo}
+                                    alt={badge.name}
+                                    style={{
+                                        width: '100%',
+                                        height: '100%',
+                                        objectFit: 'contain'
+                                    }}
+                                />
+                            </Box>
+                            <Typography
+                                sx={{
+                                    color: 'white',
+                                    fontSize: '0.85rem',
+                                    textAlign: 'center'
+                                }}
+                            >
+                                {badge.name}
+                            </Typography>
+                        </Box>
+                    </Grid>
+                ))}
+            </Grid>
+        </Box>
+    );
+};
 const ExperienceCard = ({ title, company, responsibilities }: any) => (
     <Box
         sx={{
@@ -16,8 +103,8 @@ const ExperienceCard = ({ title, company, responsibilities }: any) => (
         <Typography
             variant="h6"
             color="white"
-            sx={{ 
-                fontSize: '1.25rem', 
+            sx={{
+                fontSize: '1.25rem',
                 mb: 1,
                 fontWeight: '500'
             }}
@@ -25,8 +112,8 @@ const ExperienceCard = ({ title, company, responsibilities }: any) => (
             {title}
         </Typography>
         <Typography
-            sx={{ 
-                fontSize: '0.9rem', 
+            sx={{
+                fontSize: '0.9rem',
                 mb: 2,
                 color: '#ffffff'
             }}
@@ -109,8 +196,8 @@ const TimelineEntry = ({ date, logo, children, index }: any) => {
                         zIndex: 2
                     }}
                 >
-                    <img 
-                        src={logo} 
+                    <img
+                        src={logo}
                         alt="company logo"
                         style={{
                             width: '100%',
@@ -207,61 +294,53 @@ const Experience = () => {
     ];
 
     return (
-        <Container
-            maxWidth="lg"
-            sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                px: { xs: 3, sm: 4, md: 6 },
-                py: 8,
-                minHeight: '100vh',
-                bgcolor: '#011627',
-                position: 'relative',
-                '&::after': {
-                    content: '""',
-                    position: 'absolute',
-                    top: '250px',
-                    left: '50%',
-                    width: '2px',
-                    height: 'calc(100% - 300px)',
-                    bgcolor: '#ffffff',
-                    transform: 'translateX(-50%)',
-                    zIndex: 1
-                }
-            }}
-        >
-            <Typography
-                variant="h2"
+        <>
+            <Container
+                maxWidth="lg"
                 sx={{
-                    color: 'white',
-                    textAlign: 'center',
-                    fontSize: '3rem',
-                    fontWeight: '600',
-                    mb: 12,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    px: { xs: 3, sm: 4, md: 6 },
+                    py: 8,
+                    minHeight: '100vh',
+                    bgcolor: '#011627',
                     position: 'relative',
-                    zIndex: 2
+                    '&::after': {
+                        content: '""',
+                        position: 'absolute',
+                        top: '200px',
+                        left: '50%',
+                        width: '2px',
+                        height: 'calc(100% - 300px)',
+                        bgcolor: '#ffffff',
+                        transform: 'translateX(-50%)',
+                        zIndex: 1
+                    }
                 }}
             >
-                Work Experience.
-            </Typography>
+                <Header>
+                    Work <span>Experience</span>
+                </Header>
 
-            <Stack>
-                {experiences.map((exp, index) => (
-                    <TimelineEntry
-                        key={index}
-                        date={exp.date}
-                        index={index}
-                        logo={exp.logo}
-                    >
-                        <ExperienceCard
-                            title={exp.title}
-                            company={exp.company}
-                            responsibilities={exp.responsibilities}
-                        />
-                    </TimelineEntry>
-                ))}
-            </Stack>
-        </Container>
+                <Stack>
+                    {experiences.map((exp, index) => (
+                        <TimelineEntry
+                            key={index}
+                            date={exp.date}
+                            index={index}
+                            logo={exp.logo}
+                        >
+                            <ExperienceCard
+                                title={exp.title}
+                                company={exp.company}
+                                responsibilities={exp.responsibilities}
+                            />
+                        </TimelineEntry>
+                    ))}
+                </Stack>
+            </Container>
+            <TechBadges />
+        </>
     );
 };
 

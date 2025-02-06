@@ -150,13 +150,13 @@ function App() {
         <Box ref={homeRef} sx={{ height: '100vh' }}>
           <Home />
         </Box>
-        <Box ref={aboutRef} sx={{ height: '100vh' }}>
+        <Box ref={aboutRef} sx={{ height: '90vh' }}>
           <About />
         </Box>
         {/* <Box ref={projectsRef} sx={{ height: '100vh' }}>
           <Projects />
         </Box> */}
-         <Box ref={experienceRef} sx={{ height: '370vh' }}>
+         <Box ref={experienceRef} sx={{ height: '400vh' }}>
           <Experience />
         </Box>
         <Box ref={contactRef} sx={{ height: '100vh' }}>
@@ -168,3 +168,37 @@ function App() {
 }
 
 export default App;
+
+// src/components/Typography.tsx
+import { Typography } from '@mui/material';
+
+export const Header = ({ children }: { children: React.ReactNode }) => (
+  <Typography
+    variant="h2"
+    sx={{
+      mb: 4,
+      textAlign: 'center',
+      '& span': {
+        color: 'primary.main',
+      },
+    }}
+  >
+    {children}
+  </Typography>
+);
+
+export const Paragraph = ({ children }: { children: React.ReactNode }) => (
+  <Typography
+    variant="h6"
+    sx={{
+      mb: 6,
+      lineHeight: 1.8,
+      maxWidth: '1000px',
+      mx: 'auto',
+      textAlign: 'center',
+      color: 'rgba(255, 255, 255, 0.9)',
+    }}
+  >
+    {children}
+  </Typography>
+);

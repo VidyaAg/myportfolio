@@ -1,5 +1,6 @@
 import { Container, Typography, Box, Grid } from "@mui/material";
 import { Mail, Phone, LocationOn } from "@mui/icons-material";
+import { Header } from "./App";
 
 const ContactCard = ({ icon, title, content }: { icon: React.ReactNode, title: string, content: string }) => (
     <Box
@@ -68,27 +69,19 @@ const Contact = () => {
 
     return (
         <Container
-        disableGutters // Remove default Container padding
-        sx={{
-            flex: 1,
-            display: 'flex',
-            alignItems: 'center',
-            px: { xs: 3, sm: 4, md: 6 }, // Match header padding exactly
-            height: 'calc(100vh - 64px)' // Subtract header height
-        }}
+            disableGutters // Remove default Container padding
+            sx={{
+                flex: 1,
+                display: 'flex',
+                alignItems: 'center',
+                px: { xs: 3, sm: 4, md: 6 }, // Match header padding exactly
+                height: 'calc(100vh - 64px)' // Subtract header height
+            }}
         >
-            <Typography
-                component="h1"
-                sx={{
-                    fontSize: { xs: '2.5rem', md: '3rem' },
-                    fontWeight: 600,
-                    color: '#fff',
-                    textAlign: 'center',
-                    mb: 6
-                }}
-            >
-                Contact <span style={{ color: 'rgba(255, 255, 255, 0.6)' }}>Me</span>
-            </Typography>
+            <Header>
+                Contact <span>Me</span>
+            </Header>
+
             <Grid
                 container
                 spacing={4}
