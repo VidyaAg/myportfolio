@@ -52,12 +52,12 @@ const Contact = () => {
         {
             icon: <Mail />,
             title: "Email",
-            content: "imrushi@gmail.com"
+            content: "vidyaagre@gmail.com"
         },
         {
             icon: <Phone />,
             title: "Phone",
-            content: "(+91) 9503432790"
+            content: "(+91) 7775970819"
         },
         {
             icon: <LocationOn />,

@@ -1,46 +1,56 @@
-import { Container, Typography, Box, Stack, Grid } from "@mui/material";
-import './index.css';
+import { Container, Typography, Box, Stack } from "@mui/material";
 
 const ExperienceCard = ({ title, company, responsibilities }: any) => (
     <Box
         sx={{
-            backgroundColor: 'rgba(20, 28, 47, 0.7)',
+            backgroundColor: 'rgba(2, 12, 27, 0.7)',
             borderRadius: '8px',
             padding: '24px',
-            width: '450px',
+            width: '400px',
+            border: '1px solid rgba(255, 255, 255, 0.1)',
+            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+            position: 'relative',
+            zIndex: 2
         }}
     >
         <Typography
             variant="h6"
             color="white"
-            sx={{ fontSize: '1.25rem', mb: 1 }}
+            sx={{ 
+                fontSize: '1.25rem', 
+                mb: 1,
+                fontWeight: '500'
+            }}
         >
             {title}
         </Typography>
         <Typography
-            color="primary"
-            sx={{ fontSize: '0.9rem', mb: 2 }}
+            sx={{ 
+                fontSize: '0.9rem', 
+                mb: 2,
+                color: '#ffffff'
+            }}
         >
             {company}
         </Typography>
         <Stack spacing={2}>
             {responsibilities.map((item: any, index: any) => (
-                <Box key={index} sx={{ display: 'flex', gap: 2 }}>
+                <Box key={index} sx={{ display: 'flex', gap: 2, alignItems: 'flex-start' }}>
                     <Box
                         sx={{
-                            width: '4px',
-                            height: '4px',
-                            bgcolor: 'primary.main',
+                            width: '6px',
+                            height: '6px',
+                            bgcolor: '#ffffff',
                             borderRadius: '50%',
                             mt: 1,
                         }}
                     />
                     <Typography
-                        color="rgba(255, 255, 255, 0.8)"
                         sx={{
-                            fontSize: '0.85rem',
+                            fontSize: '0.9rem',
                             lineHeight: 1.6,
-                            flex: 1
+                            flex: 1,
+                            color: 'rgba(255, 255, 255, 0.7)'
                         }}
                     >
                         {item}
@@ -52,7 +62,7 @@ const ExperienceCard = ({ title, company, responsibilities }: any) => (
 );
 
 const TimelineEntry = ({ date, logo, children, index }: any) => {
-    const isEven = index % 2 === 1;
+    const isEven = index % 2 === 0;
 
     return (
         <Box
@@ -60,23 +70,22 @@ const TimelineEntry = ({ date, logo, children, index }: any) => {
                 display: 'flex',
                 justifyContent: 'center',
                 position: 'relative',
-                mb: 4
+                mb: 8,
+                zIndex: 2
             }}
         >
-            {/* Content left side if odd, empty if even */}
             <Box
                 sx={{
                     flex: 1,
                     display: 'flex',
                     justifyContent: 'flex-end',
                     pr: 6,
-                    visibility: isEven ? 'hidden' : 'visible'
+                    visibility: isEven ? 'visible' : 'hidden'
                 }}
             >
-                {!isEven && children}
+                {isEven && children}
             </Box>
 
-            {/* Center timeline */}
             <Box
                 sx={{
                     display: 'flex',
@@ -88,137 +97,64 @@ const TimelineEntry = ({ date, logo, children, index }: any) => {
             >
                 <Box
                     sx={{
-                        width: '32px',
-                        height: '32px',
+                        width: '48px',
+                        height: '48px',
                         borderRadius: '50%',
+                        border: '3px solid #ffffff',
+                        backgroundColor: '#ffffff',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        padding: '4px'
                     }}
                 >
-                    <img src={logo} />
+                    <img 
+                        src={logo} 
+                        alt="company logo"
+                        style={{
+                            width: '100%',
+                            height: '100%',
+                            objectFit: 'contain',
+                            borderRadius: '50%'
+                        }}
+                    />
                 </Box>
                 <Typography
-                    color="white"
                     sx={{
+                        color: '#ffffff',
                         fontSize: '0.85rem',
                         whiteSpace: 'nowrap',
                         position: 'absolute',
-                        top: '55px'
+                        top: '60px',
+                        fontWeight: '500'
                     }}
                 >
                     {date}
                 </Typography>
             </Box>
 
-            {/* Content right side if even, empty if odd */}
             <Box
                 sx={{
                     flex: 1,
                     display: 'flex',
                     justifyContent: 'flex-start',
                     pl: 6,
-                    visibility: isEven ? 'visible' : 'hidden'
+                    visibility: isEven ? 'hidden' : 'visible'
                 }}
             >
-                {isEven && children}
+                {!isEven && children}
             </Box>
         </Box>
     );
 };
 
-const TechBadges = () => {
-    const badges = [
-        { name: "HTML5", logo: "src/assets/html.png" },
-        { name: "CSS3", logo: "src/assets/css.png" },
-        { name: "JavaScript", logo: "src/assets/js.png" },
-        { name: "TypeScript", logo: "src/assets/ts.jpg" },
-        { name: "React", logo: "src/assets/React-icon.svg.png" },
-        { name: "Redux", logo: "src/assets/redux.png" },
-        { name: "Git", logo: "src/assets/git.png" },
-    ];
-
-    return (
-        <Box sx={{ bgcolor: '#011627', py: 4 }}>
-            <Typography
-                variant="h3"
-                sx={{
-                    color: 'white',
-                    textAlign: 'center',
-                    fontSize: '2rem',
-                    fontWeight: 600,
-                    mb: 4
-                }}
-            >
-                Tech Stack
-            </Typography>
-
-            <Grid
-                container
-                spacing={3}
-                justifyContent="center"
-                sx={{
-                    maxWidth: '1000px',
-                    mx: 'auto',
-                    px: { xs: 2, md: 0 }
-                }}
-            >
-                {badges.map((badge, index) => (
-                    <Grid item key={index} xs={4} sm={3} md={2}>
-                        <Box
-                            sx={{
-                                display: 'flex',
-                                flexDirection: 'column',
-                                alignItems: 'center',
-                                gap: 1
-                            }}
-                        >
-                            <Box
-                                sx={{
-                                    width: '80px',
-                                    height: '80px',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    transition: 'transform 0.3s ease',
-                                    backgroundColor: '#ffffff',
-                                    borderRadius: '8px',
-                                    padding: '12px',
-                                    '&:hover': {
-                                        transform: 'scale(1.1)',
-                                    }
-                                }}
-                            >
-                                <img
-                                    src={badge.logo}
-                                    alt={badge.name}
-                                    style={{
-                                        width: '100%',
-                                        height: '100%',
-                                        objectFit: 'contain'
-                                    }}
-                                />
-                            </Box>
-                            <Typography
-                                sx={{
-                                    color: 'white',
-                                    fontSize: '0.85rem',
-                                    textAlign: 'center'
-                                }}
-                            >
-                                {badge.name}
-                            </Typography>
-                        </Box>
-                    </Grid>
-                ))}
-            </Grid>
-        </Box>
-    );
-};
 const Experience = () => {
     const experiences = [
         {
             date: "Sep 2021 - Jan 2022",
             title: "Web Developer - Intern",
             company: "Leadtronics Pvt Ltd",
-            logo: 'src/assets/leadTronicsLogo.jpg',
+            logo: 'src/assets/leadtronicsLogo.jpg',
             responsibilities: [
                 "Developing and maintaining web applications using React.js and other related technologies.",
                 "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
@@ -230,7 +166,7 @@ const Experience = () => {
             date: "Feb 2022 - Jun 2022",
             title: "Web Developer",
             company: "Leadtronics Pvt Ltd",
-            logo: 'src/assets/leadTronicsLogo.jpg',
+            logo: 'src/assets/leadtronicsLogo.jpg',
             responsibilities: [
                 "Developing and maintaining web applications using React.js and other related technologies.",
                 "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
@@ -265,65 +201,61 @@ const Experience = () => {
     ];
 
     return (
-        <>
-            <Container
-                maxWidth="lg"
-                disableGutters
+        <Container
+            maxWidth="lg"
+            sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                px: { xs: 3, sm: 4, md: 6 },
+                py: 8,
+                minHeight: '100vh',
+                bgcolor: '#011627',
+                position: 'relative',
+                '&::after': {
+                    content: '""',
+                    position: 'absolute',
+                    top: '250px',
+                    left: '50%',
+                    width: '2px',
+                    height: 'calc(100% - 300px)',
+                    bgcolor: '#ffffff',
+                    transform: 'translateX(-50%)',
+                    zIndex: 1
+                }
+            }}
+        >
+            <Typography
+                variant="h2"
                 sx={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    px: { xs: 3, sm: 4, md: 6 },
-                    py: 8,
-                    minHeight: 'calc(100vh - 64px)',
-                    bgcolor: '#011627',
+                    color: 'white',
+                    textAlign: 'center',
+                    fontSize: '3rem',
+                    fontWeight: '600',
+                    mb: 12,
                     position: 'relative',
-                    '&::after': {
-                        content: '""',
-                        position: 'absolute',
-                        top: '250px',
-                        left: '50%',
-                        width: '3px',
-                        height: 'calc(100% - 300px)',
-                        bgcolor: 'rgba(255, 255, 255, 0.96)',
-                        transform: 'translateX(-50%)',
-                        zIndex: 0,
-                        marginLeft: '9px'
-                    }
+                    zIndex: 2
                 }}
             >
-                <Typography
-                    variant="h2"
-                    sx={{
-                        color: 'white',
-                        textAlign: 'center',
-                        fontSize: '2.5rem',
-                        fontWeight: 600,
-                        mb: 8
-                    }}
-                >
-                    Work Experience.
-                </Typography>
+                Work Experience.
+            </Typography>
 
-                <Stack>
-                    {experiences.map((exp, index) => (
-                        <TimelineEntry
-                            key={index}
-                            date={exp.date}
-                            index={index}
-                            logo={exp.logo}
-                            logoClass="logo-image"
-                        >
-                            <ExperienceCard
-                                title={exp.title}
-                                company={exp.company}
-                                responsibilities={exp.responsibilities}
-                            />
-                        </TimelineEntry>
-                    ))}
-                </Stack>
-            </Container>
-            <TechBadges />
-        </>
+            <Stack>
+                {experiences.map((exp, index) => (
+                    <TimelineEntry
+                        key={index}
+                        date={exp.date}
+                        index={index}
+                        logo={exp.logo}
+                    >
+                        <ExperienceCard
+                            title={exp.title}
+                            company={exp.company}
+                            responsibilities={exp.responsibilities}
+                        />
+                    </TimelineEntry>
+                ))}
+            </Stack>
+        </Container>
     );
 };
 

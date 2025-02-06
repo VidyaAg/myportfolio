@@ -92,10 +92,10 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Box sx={{ bgcolor: 'background.default', minHeight: '100vh' }}>
-        <AppBar position="sticky" elevation={0} sx={{ bgcolor: 'transparent' }}>
-          <Box sx={{ px: { xs: 2, sm: 3, md: 5, lg: 10 } }}>
+        <AppBar position="sticky" elevation={0}>
+          <Box sx={{ px: { xs: 3, sm: 4, md: 6 } }}>
             <Toolbar sx={{ justifyContent: 'space-between', height: '64px' }}>
-              <Stack direction="row" spacing={2} alignItems="center">
+              <Stack direction="row" alignItems="center">
                 <Box
                   sx={{
                     display: 'flex',
@@ -106,11 +106,11 @@ function App() {
                 >
                   <Box
                     component="img"
-                    src="src/assets/LogoVA.png"
+                    src="src/assets/LogoName.png"
                     alt="VA Logo"
                     sx={{
-                      height: '100%',
-                      width: '100%',
+                      height: '76px',
+                      width: '209px',
                       objectFit: 'cover',
                       objectPosition: 'center',
                       borderRadius: '4px',
@@ -156,7 +156,7 @@ function App() {
         {/* <Box ref={projectsRef} sx={{ height: '100vh' }}>
           <Projects />
         </Box> */}
-         <Box ref={experienceRef} sx={{ height: '520vh' }}>
+         <Box ref={experienceRef} sx={{ height: '370vh' }}>
           <Experience />
         </Box>
         <Box ref={contactRef} sx={{ height: '100vh' }}>
