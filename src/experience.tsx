@@ -88,15 +88,15 @@ const TimelineEntry = ({ date, logo, children, index }: any) => {
 
             <Box
                 sx={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
                     position: 'relative',
-                    width: '48px'
+                    width: 0
                 }}
             >
                 <Box
                     sx={{
+                        position: 'absolute',
+                        left: '50%',
+                        transform: 'translateX(-50%)',
                         width: '48px',
                         height: '48px',
                         borderRadius: '50%',
@@ -105,7 +105,8 @@ const TimelineEntry = ({ date, logo, children, index }: any) => {
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        padding: '4px'
+                        padding: '4px',
+                        zIndex: 2
                     }}
                 >
                     <img 
@@ -124,9 +125,14 @@ const TimelineEntry = ({ date, logo, children, index }: any) => {
                         color: '#ffffff',
                         fontSize: '0.85rem',
                         whiteSpace: 'nowrap',
+                        fontWeight: '500',
                         position: 'absolute',
-                        top: '60px',
-                        fontWeight: '500'
+                        top: '12px',
+                        ...(isEven ? {
+                            left: '40px'
+                        } : {
+                            right: '40px'
+                        })
                     }}
                 >
                     {date}
