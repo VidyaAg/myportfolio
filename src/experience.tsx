@@ -289,7 +289,7 @@ const Experience = () => {
             date: "Sep 2021 - Jan 2022",
             title: "Web Developer - Intern",
             company: "Leadtronics Pvt Ltd",
-            logo: 'src/assets/leadtronicsLogo.jpg',
+            logo: '/leadtronicsLogo.jpg',
             responsibilities: [
                 "Developing and maintaining web applications using React.js and other related technologies.",
                 "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
@@ -301,7 +301,7 @@ const Experience = () => {
             date: "Feb 2022 - Jun 2022",
             title: "Web Developer",
             company: "Leadtronics Pvt Ltd",
-            logo: 'src/assets/leadtronicsLogo.jpg',
+            logo: '/leadtronicsLogo.jpg',
             responsibilities: [
                 "Developing and maintaining web applications using React.js and other related technologies.",
                 "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
@@ -313,7 +313,7 @@ const Experience = () => {
             date: "July 2022 - Apr 2024",
             title: "Software Engineer",
             company: "Invimatic Technologies Pvt Ltd",
-            logo: 'src/assets/invimatic_logo.jpg',
+            logo: '/invimatic_logo.jpg',
             responsibilities: [
                 "Developing and maintaining web applications using React.js and other related technologies.",
                 "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
@@ -325,7 +325,7 @@ const Experience = () => {
             date: "May 2024 - Present",
             title: "Senior Software Engineer",
             company: "Invimatic Technologies Pvt Ltd",
-            logo: 'src/assets/invimatic_logo.jpg',
+            logo: '/invimatic_logo.jpg',
             responsibilities: [
                 "Developing and maintaining web applications using React.js and other related technologies.",
                 "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
