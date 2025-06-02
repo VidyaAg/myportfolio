@@ -6,11 +6,15 @@ import {
   Toolbar,
   createTheme,
   ThemeProvider,
-  CssBaseline
+  CssBaseline,
+  Typography
 } from '@mui/material';
-
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import Home from './home';
 import About from './about';
+import { useRef } from 'react';
+import Experience from './experience';
+import Contact from './contact';
 
 // Create custom theme
 export const theme = createTheme({
@@ -58,12 +62,6 @@ export const theme = createTheme({
     }
   }
 });
-
-
-import { useRef } from 'react';
-// import Projects from './projects';
-import Experience from './experience';
-import Contact from './contact';
 
 function App() {
   const homeRef = useRef<HTMLDivElement>(null);
@@ -140,28 +138,51 @@ function App() {
                 </Stack>
               </Box>
 
-              <Button variant="contained" color="primary">
-                Let's Talk
+              <Button style={{color:'white'}} onClick={() => window.open('https://www.linkedin.com/in/vidya-agre-1aa495189/', '_blank')}>
+                <LinkedInIcon />
               </Button>
+              
             </Toolbar>
           </Box>
         </AppBar>
 
-        <Box ref={homeRef} sx={{ height: '100vh' }}>
-          <Home />
+        {/* Main content with even spacing */}
+        <Box sx={{ py: 4 }}> {/* Add padding to the main container */}
+          <Box ref={homeRef} sx={{ minHeight: '100vh', mb: 8 }}>
+            <Home />
+          </Box>
+          
+          <Box ref={aboutRef} sx={{ minHeight: '100vh', mb: 8 }}>
+            <About />
+          </Box>
+          
+          {/* <Box ref={projectsRef} sx={{ minHeight: '100vh', mb: 8 }}>
+            <Projects />
+          </Box> */}
+          
+          <Box ref={experienceRef} sx={{ minHeight: '100vh', mb: 8 }}>
+            <Experience />
+          </Box>
+          
+          <Box ref={contactRef} sx={{ minHeight: '100vh' }}> {/* No bottom margin for last section */}
+            <Contact />
+          </Box>
         </Box>
-        <Box ref={aboutRef} sx={{ height: '90vh' }}>
-          <About />
-        </Box>
-        {/* <Box ref={projectsRef} sx={{ height: '100vh' }}>
-          <Projects />
-        </Box> */}
-         <Box ref={experienceRef} sx={{ height: '400vh' }}>
-          <Experience />
-        </Box>
-        <Box ref={contactRef} sx={{ height: '100vh' }}>
-          <Contact />
-        </Box>
+      </Box>
+      <Box
+        component="footer"
+        sx={{
+          py: 3,
+          px: 2,
+          mt: 'auto',
+          backgroundColor: 'background.paper',
+          borderTop: '1px solid rgba(255, 255, 255, 0.12)',
+          textAlign: 'center'
+        }}
+      >
+        <Typography variant="body2" color="text.secondary">
+          © 2025 Vidya Agre. All rights reserved.
+        </Typography>
       </Box>
     </ThemeProvider>
   );
@@ -170,7 +191,6 @@ function App() {
 export default App;
 
 // src/components/Typography.tsx
-import { Typography } from '@mui/material';
 
 export const Header = ({ children }: { children: React.ReactNode }) => (
   <Typography
