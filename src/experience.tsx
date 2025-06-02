@@ -1,4 +1,4 @@
-import { Container, Box, Stack, Typography, Grid } from "@mui/material";
+import { Container, Box, Stack, Typography } from "@mui/material";
 import { Header } from "./App";
 import { motion } from 'framer-motion';
 
