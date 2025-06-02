@@ -104,7 +104,7 @@ function App() {
                 >
                   <Box
                     component="img"
-                    src="src/assets/LogoName.png"
+                    src="/assets/LogoName.png"
                     alt="VA Logo"
                     sx={{
                       height: '76px',

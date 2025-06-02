@@ -94,7 +94,7 @@ const Home = () => {
                         }}
                     >
                         Specializing in React.js. I create responsive, user-friendly interfaces with clean and scalable code.
-                        Passionate about design, performance optimization, and turning ideas into impactful digital experiences. Let’s create something amazing!
+                        Passionate about design, performance optimization, and turning ideas into impactful digital experiences. Let's create something amazing!
                     </Typography>
 
                     <Stack direction="row" spacing={4} alignItems="center">
@@ -149,7 +149,7 @@ const Home = () => {
                     />
                     <Box
                         component="img"
-                        src="src/assets/Media.jpeg"
+                        src="/assets/Media.jpeg"
                         alt="Profile"
                         sx={{
                             width: '100%',
