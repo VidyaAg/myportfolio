@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 
 const TechBadges = () => {
     const theme = useTheme();
-    const isMobile = useMediaQuery(theme.breakpoints.down('md'));
     
     const badges = [
         { name: "HTML5", logo: "assets/html.png" },
@@ -13,21 +12,25 @@ const TechBadges = () => {
         { name: "TypeScript", logo: "assets/ts.jpg" },
         { name: "React", logo: "assets/React-icon.svg.png" },
         { name: "Redux", logo: "assets/redux.png" },
-        { name: "Node.js", logo: "assets/nodejs.png" },
+        // { name: "Node.js", logo: "assets/nodejs.png" },
         { name: "Git", logo: "assets/git.png" },
         { name: "Next.js", logo: "assets/next.png" },
     ];
 
     return (
-        <Box sx={{ bgcolor: '#011627', py: 8 }}>
+        <Box sx={{ 
+            bgcolor: '#011627', 
+            py: { xs: 4, sm: 6, md: 8 },
+            px: { xs: 2, sm: 3, md: 4 }
+        }}>
             <Typography
                 variant="h3"
                 sx={{
                     color: 'white',
                     textAlign: 'center',
-                    fontSize: { xs: '1.5rem', sm: '1.75rem', md: '2rem' },
+                    fontSize: { xs: '1.25rem', sm: '1.5rem', md: '2rem' },
                     fontWeight: 600,
-                    mb: 6
+                    mb: { xs: 3, sm: 4, md: 6 }
                 }}
             >
                 <motion.div
@@ -41,13 +44,17 @@ const TechBadges = () => {
             </Typography>
             <Box
                 sx={{
-                    display: 'flex',
-                    flexWrap: 'wrap',
-                    justifyContent: 'center',
+                    display: 'grid',
+                    gridTemplateColumns: {
+                        xs: 'repeat(2, 1fr)',
+                        sm: 'repeat(3, 1fr)',
+                        md: 'repeat(4, 1fr)',
+                        lg: 'repeat(5, 1fr)'
+                    },
                     gap: { xs: 2, sm: 3, md: 4 },
-                    maxWidth: '900px',
+                    maxWidth: '1200px',
                     mx: 'auto',
-                    px: { xs: 2, sm: 3, md: 4 }
+                    px: { xs: 1, sm: 2, md: 3 }
                 }}
             >
                 {badges.map((badge, index) => (
@@ -57,21 +64,20 @@ const TechBadges = () => {
                             display: 'flex',
                             flexDirection: 'column',
                             alignItems: 'center',
-                            gap: { xs: 1, sm: 1.5, md: 2 },
-                            flex: '0 0 auto'
+                            gap: { xs: 0.5, sm: 1, md: 1.5 }
                         }}
                     >
                         <Box
                             sx={{
-                                width: { xs: '60px', sm: '70px', md: '85px' },
-                                height: { xs: '60px', sm: '70px', md: '85px' },
+                                width: { xs: '50px', sm: '60px', md: '75px' },
+                                height: { xs: '50px', sm: '60px', md: '75px' },
                                 display: 'flex',
                                 alignItems: 'center',
                                 justifyContent: 'center',
                                 transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                                 backgroundColor: '#ffffff',
-                                borderRadius: { xs: '12px', md: '16px' },
-                                padding: { xs: '12px', md: '16px' },
+                                borderRadius: { xs: '8px', sm: '10px', md: '12px' },
+                                padding: { xs: '8px', sm: '10px', md: '12px' },
                                 boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)',
                                 cursor: 'pointer',
                                 '&:hover': {
@@ -94,7 +100,7 @@ const TechBadges = () => {
                         <Typography
                             sx={{
                                 color: 'white',
-                                fontSize: { xs: '0.75rem', sm: '0.85rem', md: '0.9rem' },
+                                fontSize: { xs: '0.7rem', sm: '0.8rem', md: '0.9rem' },
                                 textAlign: 'center',
                                 fontWeight: 600,
                                 letterSpacing: '0.5px'
