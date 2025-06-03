@@ -3,7 +3,6 @@ import { Header } from "./App";
 import { motion } from 'framer-motion';
 
 const TechBadges = () => {
-    const theme = useTheme();
     
     const badges = [
         { name: "HTML5", logo: "assets/html.png" },
