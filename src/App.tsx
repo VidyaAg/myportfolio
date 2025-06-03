@@ -7,9 +7,12 @@ import {
   createTheme,
   ThemeProvider,
   CssBaseline,
-  Typography
+  Typography,
+  IconButton
 } from '@mui/material';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import TwitterIcon from '@mui/icons-material/Twitter';
 import Home from './home';
 import About from './about';
 import { useRef } from 'react';
@@ -138,10 +141,29 @@ function App() {
                 </Stack>
               </Box>
 
-              <Button style={{color:'white'}} onClick={() => window.open('https://www.linkedin.com/in/vidya-agre-1aa495189/', '_blank')}>
-                <LinkedInIcon />
-              </Button>
-              
+              <Stack direction="row" spacing={1}>
+                <IconButton 
+                  color="inherit" 
+                  onClick={() => window.open('https://github.com/VidyaAg', '_blank')}
+                  sx={{ '&:hover': { color: 'primary.main' } }}
+                >
+                  <GitHubIcon />
+                </IconButton>
+                <IconButton 
+                  color="inherit" 
+                  onClick={() => window.open('https://www.linkedin.com/in/vidya-agre-1aa495189/', '_blank')}
+                  sx={{ '&:hover': { color: 'primary.main' } }}
+                >
+                  <LinkedInIcon />
+                </IconButton>
+                <IconButton 
+                  color="inherit" 
+                  onClick={() => window.open('https://x.com/vidya_agre', '_blank')}
+                  sx={{ '&:hover': { color: 'primary.main' } }}
+                >
+                  <TwitterIcon />
+                </IconButton>
+              </Stack>
             </Toolbar>
           </Box>
         </AppBar>
