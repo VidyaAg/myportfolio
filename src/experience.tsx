@@ -1,8 +1,11 @@
-import { Container, Box, Stack, Typography } from "@mui/material";
+import { Container, Box, Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { Header } from "./App";
 import { motion } from 'framer-motion';
 
 const TechBadges = () => {
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+    
     const badges = [
         { name: "HTML5", logo: "assets/html.png" },
         { name: "CSS3", logo: "assets/css.png" },
@@ -22,7 +25,7 @@ const TechBadges = () => {
                 sx={{
                     color: 'white',
                     textAlign: 'center',
-                    fontSize: '2rem',
+                    fontSize: { xs: '1.5rem', sm: '1.75rem', md: '2rem' },
                     fontWeight: 600,
                     mb: 6
                 }}
@@ -41,10 +44,10 @@ const TechBadges = () => {
                     display: 'flex',
                     flexWrap: 'wrap',
                     justifyContent: 'center',
-                    gap: { xs: 3, sm: 4, md: 5 },
+                    gap: { xs: 2, sm: 3, md: 4 },
                     maxWidth: '900px',
                     mx: 'auto',
-                    px: { xs: 3, md: 4 }
+                    px: { xs: 2, sm: 3, md: 4 }
                 }}
             >
                 {badges.map((badge, index) => (
@@ -54,21 +57,21 @@ const TechBadges = () => {
                             display: 'flex',
                             flexDirection: 'column',
                             alignItems: 'center',
-                            gap: 2,
+                            gap: { xs: 1, sm: 1.5, md: 2 },
                             flex: '0 0 auto'
                         }}
                     >
                         <Box
                             sx={{
-                                width: { xs: '70px', sm: '80px', md: '85px' },
-                                height: { xs: '70px', sm: '80px', md: '85px' },
+                                width: { xs: '60px', sm: '70px', md: '85px' },
+                                height: { xs: '60px', sm: '70px', md: '85px' },
                                 display: 'flex',
                                 alignItems: 'center',
                                 justifyContent: 'center',
                                 transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                                 backgroundColor: '#ffffff',
-                                borderRadius: '16px',
-                                padding: '16px',
+                                borderRadius: { xs: '12px', md: '16px' },
+                                padding: { xs: '12px', md: '16px' },
                                 boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)',
                                 cursor: 'pointer',
                                 '&:hover': {
@@ -91,7 +94,7 @@ const TechBadges = () => {
                         <Typography
                             sx={{
                                 color: 'white',
-                                fontSize: { xs: '0.85rem', sm: '0.9rem' },
+                                fontSize: { xs: '0.75rem', sm: '0.85rem', md: '0.9rem' },
                                 textAlign: 'center',
                                 fontWeight: 600,
                                 letterSpacing: '0.5px'
@@ -106,86 +109,148 @@ const TechBadges = () => {
     );
 };
 
-const ExperienceCard = ({ title, company, responsibilities }: any) => (
-    <Box
-        sx={{
-            backgroundColor: 'rgba(2, 12, 27, 0.8)',
-            borderRadius: '12px',
-            padding: '32px',
-            width: '420px',
-            border: '1px solid rgba(255, 255, 255, 0.15)',
-            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2)',
-            position: 'relative',
-            zIndex: 2,
-            backdropFilter: 'blur(10px)',
-            transition: 'transform 0.2s ease, box-shadow 0.2s ease',
-            '&:hover': {
-                transform: 'translateY(-4px)',
-                boxShadow: '0 12px 40px rgba(0, 0, 0, 0.3)',
-            }
-        }}
-    >
-        <Typography
-            variant="h6"
-            color="white"
+const ExperienceCard = ({ title, company, responsibilities, date, logo }: any) => {
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+    
+    return (
+        <Box
             sx={{
-                fontSize: '1.375rem',
-                mb: 1.5,
-                fontWeight: '600',
-                lineHeight: 1.3
+                backgroundColor: 'rgba(2, 12, 27, 0.8)',
+                borderRadius: '12px',
+                padding: { xs: '20px', sm: '24px', md: '32px' },
+                width: '100%',
+                maxWidth: { xs: 'none', md: '420px' },
+                border: '1px solid rgba(255, 255, 255, 0.15)',
+                boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2)',
+                position: 'relative',
+                zIndex: 2,
+                backdropFilter: 'blur(10px)',
+                transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                '&:hover': {
+                    transform: 'translateY(-4px)',
+                    boxShadow: '0 12px 40px rgba(0, 0, 0, 0.3)',
+                }
             }}
         >
-            {title}
-        </Typography>
-        <Typography
-            sx={{
-                fontSize: '1rem',
-                mb: 3,
-                color: 'rgba(255, 255, 255, 0.8)',
-                fontWeight: '500'
-            }}
-        >
-            {company}
-        </Typography>
-        <Stack spacing={2.5}>
-            {responsibilities.map((item: any, index: any) => (
-                <Box key={index} sx={{ display: 'flex', gap: 2, alignItems: 'flex-start' }}>
+            {/* Mobile: Show date and logo at top */}
+            {isMobile && (
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 3 }}>
                     <Box
                         sx={{
-                            width: '8px',
-                            height: '8px',
-                            bgcolor: '#ffffff',
+                            width: '40px',
+                            height: '40px',
                             borderRadius: '50%',
-                            mt: 1,
+                            border: '2px solid #ffffff',
+                            backgroundColor: '#ffffff',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            padding: '4px',
                             flexShrink: 0
                         }}
-                    />
+                    >
+                        <img
+                            src={logo}
+                            alt="company logo"
+                            style={{
+                                width: '100%',
+                                height: '100%',
+                                objectFit: 'contain',
+                                borderRadius: '50%'
+                            }}
+                        />
+                    </Box>
                     <Typography
                         sx={{
-                            fontSize: '0.95rem',
-                            lineHeight: 1.6,
-                            flex: 1,
-                            color: 'rgba(255, 255, 255, 0.75)'
+                            color: 'rgba(255, 255, 255, 0.9)',
+                            fontSize: '0.85rem',
+                            fontWeight: '600',
+                            backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                            padding: '4px 12px',
+                            borderRadius: '16px',
+                            border: '1px solid rgba(255, 255, 255, 0.2)',
                         }}
                     >
-                        {item}
+                        {date}
                     </Typography>
                 </Box>
-            ))}
-        </Stack>
-    </Box>
-);
+            )}
+            
+            <Typography
+                variant="h6"
+                color="white"
+                sx={{
+                    fontSize: { xs: '1.1rem', sm: '1.25rem', md: '1.375rem' },
+                    mb: 1.5,
+                    fontWeight: '600',
+                    lineHeight: 1.3
+                }}
+            >
+                {title}
+            </Typography>
+            <Typography
+                sx={{
+                    fontSize: { xs: '0.9rem', md: '1rem' },
+                    mb: 3,
+                    color: 'rgba(255, 255, 255, 0.8)',
+                    fontWeight: '500'
+                }}
+            >
+                {company}
+            </Typography>
+            <Stack spacing={2}>
+                {responsibilities.map((item: any, index: any) => (
+                    <Box key={index} sx={{ display: 'flex', gap: 2, alignItems: 'flex-start' }}>
+                        <Box
+                            sx={{
+                                width: '6px',
+                                height: '6px',
+                                bgcolor: '#ffffff',
+                                borderRadius: '50%',
+                                mt: 1,
+                                flexShrink: 0
+                            }}
+                        />
+                        <Typography
+                            sx={{
+                                fontSize: { xs: '0.85rem', md: '0.95rem' },
+                                lineHeight: 1.6,
+                                flex: 1,
+                                color: 'rgba(255, 255, 255, 0.75)'
+                            }}
+                        >
+                            {item}
+                        </Typography>
+                    </Box>
+                ))}
+            </Stack>
+        </Box>
+    );
+};
 
 const TimelineEntry = ({ date, logo, children, index }: any) => {
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('md'));
     const isEven = index % 2 === 0;
 
+    if (isMobile) {
+        // Mobile layout: Simple vertical stack
+        return (
+            <Box sx={{ mb: 4, position: 'relative' }}>
+                {children}
+            </Box>
+        );
+    }
+
+    // Desktop layout: Keep your original alternating design
     return (
         <Box
             sx={{
                 display: 'flex',
                 justifyContent: 'center',
                 position: 'relative',
-                mb: 10, // Consistent spacing between timeline entries
+                mb: 10,
                 zIndex: 2
             }}
         >
@@ -195,7 +260,7 @@ const TimelineEntry = ({ date, logo, children, index }: any) => {
                     flex: 1,
                     display: 'flex',
                     justifyContent: 'flex-end',
-                    pr: 8, // Consistent padding from timeline
+                    pr: 8,
                     visibility: isEven ? 'visible' : 'hidden'
                 }}
             >
@@ -274,7 +339,7 @@ const TimelineEntry = ({ date, logo, children, index }: any) => {
                     flex: 1,
                     display: 'flex',
                     justifyContent: 'flex-start',
-                    pl: 8, // Consistent padding from timeline
+                    pl: 8,
                     visibility: isEven ? 'hidden' : 'visible'
                 }}
             >
@@ -285,6 +350,9 @@ const TimelineEntry = ({ date, logo, children, index }: any) => {
 };
 
 const Experience = () => {
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+    
     const experiences = [
         {
             date: "Sep 2021 - Jan 2022",
@@ -343,32 +411,49 @@ const Experience = () => {
                 sx={{
                     display: 'flex',
                     flexDirection: 'column',
-                    px: { xs: 4, sm: 6, md: 8 },
-                    py: 10, // Increased top/bottom padding
+                    px: { xs: 2, sm: 4, md: 8 },
+                    py: { xs: 6, md: 10 },
                     minHeight: '100vh',
                     bgcolor: '#011627',
                     position: 'relative',
-                    '&::after': {
-                        content: '""',
-                        position: 'absolute',
-                        top: '240px', // Adjusted for header spacing
-                        left: '50%',
-                        width: '3px', // Slightly thicker timeline
-                        height: 'calc(100% - 320px)', // Adjusted for footer spacing
-                        bgcolor: 'rgba(255, 255, 255, 0.3)',
-                        transform: 'translateX(-50%)',
-                        zIndex: 1,
-                        borderRadius: '2px'
-                    }
+                    // Desktop timeline line
+                    ...(!isMobile && {
+                        '&::after': {
+                            content: '""',
+                            position: 'absolute',
+                            top: '240px',
+                            left: '50%',
+                            width: '3px',
+                            height: 'calc(100% - 320px)',
+                            bgcolor: 'rgba(255, 255, 255, 0.3)',
+                            transform: 'translateX(-50%)',
+                            zIndex: 1,
+                            borderRadius: '2px'
+                        }
+                    }),
+                    // Mobile timeline line
+                    ...(isMobile && {
+                        '&::before': {
+                            content: '""',
+                            position: 'absolute',
+                            top: '140px',
+                            left: '20px',
+                            width: '2px',
+                            height: 'calc(100% - 200px)',
+                            bgcolor: 'rgba(255, 255, 255, 0.2)',
+                            zIndex: 1,
+                            borderRadius: '1px'
+                        }
+                    })
                 }}
             >
-                <Box sx={{ mb: 8 }}> {/* Consistent header spacing */}
+                <Box sx={{ mb: { xs: 4, md: 8 } }}>
                     <Header>
                         Work <span>Experience</span>
                     </Header>
                 </Box>
 
-                <Stack sx={{ pt: 4 }}> {/* Additional top padding for timeline */}
+                <Stack sx={{ pt: { xs: 2, md: 4 } }}>
                     {experiences.map((exp, index) => (
                         <TimelineEntry
                             key={index}
@@ -380,6 +465,8 @@ const Experience = () => {
                                 title={exp.title}
                                 company={exp.company}
                                 responsibilities={exp.responsibilities}
+                                date={exp.date}
+                                logo={exp.logo}
                             />
                         </TimelineEntry>
                     ))}
