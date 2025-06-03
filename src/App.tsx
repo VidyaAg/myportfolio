@@ -15,7 +15,7 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import Home from './home';
 import About from './about';
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import Experience from './experience';
 import Contact from './contact';
 
@@ -69,20 +69,52 @@ export const theme = createTheme({
 function App() {
   const homeRef = useRef<HTMLDivElement>(null);
   const aboutRef = useRef<HTMLDivElement>(null);
-  // const projectsRef = useRef<HTMLDivElement>(null);
   const experienceRef = useRef<HTMLDivElement>(null);
   const contactRef = useRef<HTMLDivElement>(null);
+  const [activeSection, setActiveSection] = useState('HOME');
 
   const navigationItems = [
     { label: 'HOME', ref: homeRef },
     { label: 'ABOUT', ref: aboutRef },
-    // { label: 'PROJECTS', ref: projectsRef },
-    { label: 'Experience', ref: experienceRef },
+    { label: 'EXPERIENCE', ref: experienceRef },
     { label: 'CONTACT', ref: contactRef },
   ];
 
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: '-50% 0px -50% 0px',
+      threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const section = entry.target.getAttribute('data-section');
+          if (section) {
+            setActiveSection(section);
+          }
+        }
+      });
+    }, observerOptions);
+
+    navigationItems.forEach((item) => {
+      if (item.ref.current) {
+        observer.observe(item.ref.current);
+      }
+    });
+
+    return () => {
+      navigationItems.forEach((item) => {
+        if (item.ref.current) {
+          observer.unobserve(item.ref.current);
+        }
+      });
+    };
+  }, []);
+
   const scrollToSection = (ref: React.RefObject<HTMLDivElement>) => {
-    const yOffset = -64; // Adjust this value based on your navbar height
+    const yOffset = -64;
     if (ref.current) {
       const y = ref.current.getBoundingClientRect().top + window.pageYOffset + yOffset;
       window.scrollTo({ top: y, behavior: 'smooth' });
@@ -131,9 +163,36 @@ function App() {
                   {navigationItems.map((item) => (
                     <Button
                       key={item.label}
-                      color={item.label === 'HOME' ? 'primary' : 'inherit'}
+                      color={activeSection === item.label ? 'primary' : 'inherit'}
                       onClick={() => scrollToSection(item.ref)}
-                      sx={{ fontWeight: 'bold' }}
+                      sx={{
+                        fontWeight: 'bold',
+                        position: 'relative',
+                        '&::after': activeSection === item.label ? {
+                          content: '""',
+                          position: 'absolute',
+                          bottom: -2,
+                          left: 0,
+                          width: '100%',
+                          height: '2px',
+                          backgroundColor: 'primary.main',
+                          transform: 'scaleX(1)',
+                          transition: 'transform 0.3s ease-in-out'
+                        } : {
+                          content: '""',
+                          position: 'absolute',
+                          bottom: -2,
+                          left: 0,
+                          width: '100%',
+                          height: '2px',
+                          backgroundColor: 'primary.main',
+                          transform: 'scaleX(0)',
+                          transition: 'transform 0.3s ease-in-out'
+                        },
+                        '&:hover::after': {
+                          transform: 'scaleX(1)'
+                        }
+                      }}
                     >
                       {item.label}
                     </Button>
@@ -168,25 +227,20 @@ function App() {
           </Box>
         </AppBar>
 
-        {/* Main content with even spacing */}
-        <Box sx={{ py: 4 }}> {/* Add padding to the main container */}
-          <Box ref={homeRef} sx={{ minHeight: '100vh', mb: 8 }}>
+        <Box sx={{ py: 4 }}>
+          <Box ref={homeRef} data-section="HOME" sx={{ minHeight: '100vh', mb: 8 }}>
             <Home />
           </Box>
           
-          <Box ref={aboutRef} sx={{ minHeight: '100vh', mb: 8 }}>
+          <Box ref={aboutRef} data-section="ABOUT" sx={{ minHeight: '100vh', mb: 8 }}>
             <About />
           </Box>
           
-          {/* <Box ref={projectsRef} sx={{ minHeight: '100vh', mb: 8 }}>
-            <Projects />
-          </Box> */}
-          
-          <Box ref={experienceRef} sx={{ minHeight: '100vh', mb: 8 }}>
+          <Box ref={experienceRef} data-section="EXPERIENCE" sx={{ minHeight: '100vh', mb: 8 }}>
             <Experience />
           </Box>
           
-          <Box ref={contactRef} sx={{ minHeight: '100vh' }}> {/* No bottom margin for last section */}
+          <Box ref={contactRef} data-section="CONTACT" sx={{ minHeight: '100vh' }}>
             <Contact />
           </Box>
         </Box>
