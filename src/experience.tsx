@@ -12,6 +12,7 @@ const TechBadges = () => {
         { name: "Redux", logo: "assets/redux.png" },
         { name: "Node.js", logo: "assets/nodejs.png" },
         { name: "Git", logo: "assets/git.png" },
+        { name: "Next.js", logo: "assets/next.png" },
     ];
 
     return (
