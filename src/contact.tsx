@@ -2,7 +2,7 @@ import { Container, Typography, Box, Grid } from "@mui/material";
 import { Mail, Phone, LocationOn } from "@mui/icons-material";
 import { Header } from "./App";
 
-const ContactCard = ({ icon, title, content }: { icon: React.ReactNode, title: string, content: string }) => (
+const ContactCard = ({ icon, title, content, onClick }: { icon: React.ReactNode, title: string, content: string, onClick?: () => void }) => (
     <Box
         sx={{
             bgcolor: 'rgba(74, 47, 120, 0.5)',
@@ -12,11 +12,14 @@ const ContactCard = ({ icon, title, content }: { icon: React.ReactNode, title: s
             flexDirection: 'column',
             alignItems: 'center',
             gap: 2,
-            transition: 'transform 0.3s ease',
+            transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+            cursor: onClick ? 'pointer' : 'default',
             '&:hover': {
                 transform: 'translateY(-5px)',
+                boxShadow: onClick ? '0 8px 25px rgba(74, 47, 120, 0.3)' : 'none',
             }
         }}
+        onClick={onClick}
     >
         <Box
             sx={{
@@ -53,12 +56,18 @@ const Contact = () => {
         {
             icon: <Mail />,
             title: "Email",
-            content: "vidyaagre@gmail.com"
+            content: "vidyaagre@gmail.com",
+            onClick: () => {
+                window.location.href = "mailto:vidyaagre@gmail.com";
+            }
         },
         {
             icon: <Phone />,
             title: "Phone",
-            content: "(+91) 7775970819"
+            content: "(+91) 7775970819",
+            onClick: () => {
+                window.location.href = "tel:+917775970819";
+            }
         },
         {
             icon: <LocationOn />,
@@ -98,7 +107,7 @@ const Contact = () => {
             <Box sx={{ flexGrow: 1, width: { xs: '100%', md: 'auto' } }}>
                 <Grid
                     container
-                    spacing={4}
+                    spacing={{ xs: 2, sm: 3, md: 4, lg: 5 }}
                     justifyContent="center"
                     sx={{
                         maxWidth: '1200px',
@@ -111,6 +120,7 @@ const Contact = () => {
                                 icon={info.icon}
                                 title={info.title}
                                 content={info.content}
+                                onClick={info.onClick}
                             />
                         </Grid>
                     ))}

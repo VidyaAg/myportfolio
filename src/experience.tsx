@@ -358,24 +358,12 @@ const Experience = () => {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('md'));
     
-    const experiences = [
+    const experiences = [      
         {
-            date: "Sep 2021 - Jan 2022",
-            title: "Web Developer - Intern",
-            company: "Leadtronics Pvt Ltd",
-            logo: '/assets/leadtronicsLogo.jpg',
-            responsibilities: [
-                "Developing and maintaining web applications using React.js and other related technologies.",
-                "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-                "Implementing responsive design and ensuring cross-browser compatibility.",
-                "Participating in code reviews and providing constructive feedback to other developers."
-            ]
-        },
-        {
-            date: "Feb 2022 - Jun 2022",
-            title: "Web Developer",
-            company: "Leadtronics Pvt Ltd",
-            logo: '/assets/leadtronicsLogo.jpg',
+            date: "May 2024 - Present",
+            title: "Senior Software Engineer",
+            company: "Invimatic Technologies Pvt Ltd",
+            logo: '/assets/invimatic_logo.jpg',
             responsibilities: [
                 "Developing and maintaining web applications using React.js and other related technologies.",
                 "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
@@ -396,10 +384,22 @@ const Experience = () => {
             ]
         },
         {
-            date: "May 2024 - Present",
-            title: "Senior Software Engineer",
-            company: "Invimatic Technologies Pvt Ltd",
-            logo: '/assets/invimatic_logo.jpg',
+            date: "Feb 2022 - Jun 2022",
+            title: "Web Developer",
+            company: "Leadtronics Pvt Ltd",
+            logo: '/assets/leadtronicsLogo.jpg',
+            responsibilities: [
+                "Developing and maintaining web applications using React.js and other related technologies.",
+                "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
+                "Implementing responsive design and ensuring cross-browser compatibility.",
+                "Participating in code reviews and providing constructive feedback to other developers."
+            ]
+        },
+        {
+            date: "Sep 2021 - Jan 2022",
+            title: "Web Developer - Intern",
+            company: "Leadtronics Pvt Ltd",
+            logo: '/assets/leadtronicsLogo.jpg',
             responsibilities: [
                 "Developing and maintaining web applications using React.js and other related technologies.",
                 "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
