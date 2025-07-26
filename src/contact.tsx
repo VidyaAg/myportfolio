@@ -56,9 +56,9 @@ const Contact = () => {
         {
             icon: <Mail />,
             title: "Email",
-            content: "vidyaagre@gmail.com",
+            content: "vidyaagre789@gmail.com",
             onClick: () => {
-                window.location.href = "mailto:vidyaagre@gmail.com";
+                window.location.href = "mailto:vidyaagre789@gmail.com";
             }
         },
         {
@@ -84,8 +84,8 @@ const Contact = () => {
                 display: 'flex',
                 flexDirection: { xs: 'column', md: 'row' }, // Stack on mobile, row on desktop
                 alignItems: { xs: 'center', md: 'flex-start' }, // Center on mobile, align top on desktop
-                px: { xs: 3, sm: 4, md: 6 },
-                py: { xs: 6, md: 10 }, // Add vertical padding
+                px: { xs: 2, sm: 3, md: 4, lg: 6 },
+                py: { xs: 4, md: 6 }, // Add vertical padding
                 minHeight: '100vh', // Ensure it takes at least full viewport height
                 bgcolor: '#011627' // Set background color
             }}
@@ -93,8 +93,8 @@ const Contact = () => {
              <Box
                 sx={{
                     flexShrink: 0,
-                    mb: { xs: 6, md: 0 }, // Margin bottom on mobile, none on desktop
-                    mr: { md: 8 }, // Margin right on desktop
+                    mb: { xs: 4, md: 0 }, // Margin bottom on mobile, none on desktop
+                    mr: { md: 6 }, // Margin right on desktop
                     width: { xs: '100%', md: 'auto' },
                     textAlign: { xs: 'center', md: 'left' }
                 }}
@@ -107,7 +107,7 @@ const Contact = () => {
             <Box sx={{ flexGrow: 1, width: { xs: '100%', md: 'auto' } }}>
                 <Grid
                     container
-                    spacing={{ xs: 2, sm: 3, md: 4, lg: 5 }}
+                    spacing={{ xs: 2, sm: 3, md: 4 }}
                     justifyContent="center"
                     sx={{
                         maxWidth: '1200px',

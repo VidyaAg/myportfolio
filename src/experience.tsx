@@ -19,7 +19,7 @@ const TechBadges = () => {
     return (
         <Box sx={{ 
             bgcolor: '#011627', 
-            py: { xs: 4, sm: 6, md: 8 },
+            py: { xs: 4, md: 6 },
             px: { xs: 2, sm: 3, md: 4 }
         }}>
             <Typography
@@ -27,9 +27,7 @@ const TechBadges = () => {
                 sx={{
                     color: 'white',
                     textAlign: 'center',
-                    fontSize: { xs: '1.25rem', sm: '1.5rem', md: '2rem' },
-                    fontWeight: 600,
-                    mb: { xs: 3, sm: 4, md: 6 }
+                    mb: { xs: 4, md: 6 }
                 }}
             >
                 <motion.div
@@ -97,9 +95,9 @@ const TechBadges = () => {
                             />
                         </Box>
                         <Typography
+                            variant="body2"
                             sx={{
                                 color: 'white',
-                                fontSize: { xs: '0.7rem', sm: '0.8rem', md: '0.9rem' },
                                 textAlign: 'center',
                                 fontWeight: 600,
                                 letterSpacing: '0.5px'
@@ -123,7 +121,7 @@ const ExperienceCard = ({ title, company, responsibilities, date, logo }: any) =
             sx={{
                 backgroundColor: 'rgba(2, 12, 27, 0.8)',
                 borderRadius: '12px',
-                padding: { xs: '20px', sm: '24px', md: '32px' },
+                padding: { xs: 3, sm: 4, md: 5 },
                 width: '100%',
                 maxWidth: { xs: 'none', md: '420px' },
                 border: '1px solid rgba(255, 255, 255, 0.15)',
@@ -167,9 +165,9 @@ const ExperienceCard = ({ title, company, responsibilities, date, logo }: any) =
                         />
                     </Box>
                     <Typography
+                        variant="body2"
                         sx={{
                             color: 'rgba(255, 255, 255, 0.9)',
-                            fontSize: '0.85rem',
                             fontWeight: '600',
                             backgroundColor: 'rgba(255, 255, 255, 0.1)',
                             padding: '4px 12px',
@@ -183,10 +181,9 @@ const ExperienceCard = ({ title, company, responsibilities, date, logo }: any) =
             )}
             
             <Typography
-                variant="h6"
+                variant="h5"
                 color="white"
                 sx={{
-                    fontSize: { xs: '1.1rem', sm: '1.25rem', md: '1.375rem' },
                     mb: 1.5,
                     fontWeight: '600',
                     lineHeight: 1.3
@@ -195,8 +192,8 @@ const ExperienceCard = ({ title, company, responsibilities, date, logo }: any) =
                 {title}
             </Typography>
             <Typography
+                variant="body1"
                 sx={{
-                    fontSize: { xs: '0.9rem', md: '1rem' },
                     mb: 3,
                     color: 'rgba(255, 255, 255, 0.8)',
                     fontWeight: '500'
@@ -218,8 +215,8 @@ const ExperienceCard = ({ title, company, responsibilities, date, logo }: any) =
                             }}
                         />
                         <Typography
+                            variant="body2"
                             sx={{
-                                fontSize: { xs: '0.85rem', md: '0.95rem' },
                                 lineHeight: 1.6,
                                 flex: 1,
                                 color: 'rgba(255, 255, 255, 0.75)'
@@ -416,8 +413,8 @@ const Experience = () => {
                 sx={{
                     display: 'flex',
                     flexDirection: 'column',
-                    px: { xs: 2, sm: 4, md: 8 },
-                    py: { xs: 6, md: 10 },
+                    px: { xs: 2, sm: 3, md: 4, lg: 6 },
+                    py: { xs: 4, md: 6 },
                     minHeight: '100vh',
                     bgcolor: '#011627',
                     position: 'relative',
@@ -452,7 +449,7 @@ const Experience = () => {
                     })
                 }}
             >
-                <Box sx={{ mb: { xs: 4, md: 8 } }}>
+                <Box sx={{ mb: { xs: 4, md: 6 } }}>
                     <Header>
                         Work <span>Experience</span>
                     </Header>

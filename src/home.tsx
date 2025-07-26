@@ -47,26 +47,46 @@ const Home = () => {
                 flex: 1,
                 display: 'flex',
                 alignItems: 'center',
-                px: { xs: 3, sm: 4, md: 6 }, // Match header padding exactly
-                height: 'calc(100vh - 64px)' // Subtract header height
+                px: { xs: 2, sm: 3, md: 4, lg: 6 }, // Responsive padding
+                py: { xs: 4, md: 0 }, // Add vertical padding on mobile
+                height: { xs: 'auto', md: 'calc(100vh - 64px)' }, // Auto height on mobile
+                minHeight: { xs: 'calc(100vh - 64px)', md: 'calc(100vh - 64px)' }
             }}
         >
             <Box
                 sx={{
                     display: 'grid',
                     gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' },
-                    gap: 4, // Reduced gap
+                    gap: { xs: 3, sm: 4, md: 6 }, // Responsive gap
                     alignItems: 'center',
                     width: '100%',
-                    maxHeight: 'calc(100vh - 80px)'
+                    maxHeight: { xs: 'none', md: 'calc(100vh - 80px)' }
                 }}
             >
                 {/* Left Content */}
-                <Box sx={{ position: 'relative', zIndex: 1, maxHeight: '100%' }}>
-                    <Typography variant="h1" gutterBottom sx={{ color: 'white' }}>
+                <Box sx={{ 
+                    position: 'relative', 
+                    zIndex: 1, 
+                    maxHeight: '100%',
+                    order: { xs: 2, md: 1 } // Move content below image on mobile
+                }}>
+                    <Typography 
+                        variant="h1" 
+                        gutterBottom 
+                        sx={{ 
+                            color: 'white',
+                            textAlign: { xs: 'center', md: 'left' }
+                        }}
+                    >
                         HI! I'M VIDYA
                     </Typography>
-                    <Typography variant="h2" gutterBottom>
+                    <Typography 
+                        variant="h2" 
+                        gutterBottom
+                        sx={{
+                            textAlign: { xs: 'center', md: 'left' }
+                        }}
+                    >
                         I'M A <Box component="span" sx={{ color: 'primary.main' }}>{text}</Box>
                         <Box
                             component="span"
@@ -90,14 +110,20 @@ const Home = () => {
                             color: 'text.secondary',
                             mb: 4,
                             maxWidth: 'sm',
-                            fontSize: '1.1rem'
+                            textAlign: { xs: 'center', md: 'left' },
+                            mx: { xs: 'auto', md: 0 }
                         }}
                     >
                         Specializing in React.js. I create responsive, user-friendly interfaces with clean and scalable code.
                         Passionate about design, performance optimization, and turning ideas into impactful digital experiences. Let's create something amazing!
                     </Typography>
 
-                    <Stack direction="row" spacing={4} alignItems="center">
+                    <Stack 
+                        direction="row" 
+                        spacing={4} 
+                        alignItems="center"
+                        justifyContent={{ xs: 'center', md: 'flex-start' }}
+                    >
                         <Stack direction="row" spacing={2}>
                             {[
                                 { Icon: GitHubIcon, url: 'https://github.com/VidyaAg' },
@@ -123,14 +149,15 @@ const Home = () => {
                 {/* Right Image */}
                 <Box sx={{
                     position: 'relative',
-                    height: { xs: '350px', md: '450px' },
-                    maxHeight: 'calc(100vh - 100px)', // Ensure image fits in viewport
+                    height: { xs: '300px', sm: '350px', md: '450px' },
+                    maxHeight: { xs: '40vh', md: 'calc(100vh - 100px)' },
                     display: 'flex',
                     alignItems: 'center',
                     overflow: 'hidden',
                     borderRadius: 4,
                     maxWidth: { xs: '100%', md: '400px' },
                     mx: 'auto',
+                    order: { xs: 1, md: 2 } // Move image above content on mobile
                 }}>
                     {/* Blur Effect */}
                     <Box

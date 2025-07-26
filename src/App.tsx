@@ -33,20 +33,78 @@ export const theme = createTheme({
   },
   typography: {
     h1: {
-      fontSize: '3.5rem',
-      fontWeight: 700,
-      '@media (min-width:600px)': {
-        fontSize: '4.5rem',
-      },
-    },
-    h2: {
       fontSize: '2.5rem',
       fontWeight: 700,
       '@media (min-width:600px)': {
+        fontSize: '3rem',
+      },
+      '@media (min-width:900px)': {
+        fontSize: '3.5rem',
+      },
+      '@media (min-width:1200px)': {
+        fontSize: '4rem',
+      },
+    },
+    h2: {
+      fontSize: '2rem',
+      fontWeight: 700,
+      '@media (min-width:600px)': {
+        fontSize: '2.5rem',
+      },
+      '@media (min-width:900px)': {
+        fontSize: '3rem',
+      },
+      '@media (min-width:1200px)': {
         fontSize: '3.5rem',
       },
     },
+    h3: {
+      fontSize: '1.5rem',
+      fontWeight: 600,
+      '@media (min-width:600px)': {
+        fontSize: '1.75rem',
+      },
+      '@media (min-width:900px)': {
+        fontSize: '2rem',
+      },
+    },
+    h4: {
+      fontSize: '1.25rem',
+      fontWeight: 600,
+      '@media (min-width:600px)': {
+        fontSize: '1.5rem',
+      },
+    },
+    h5: {
+      fontSize: '1.125rem',
+      fontWeight: 600,
+      '@media (min-width:600px)': {
+        fontSize: '1.25rem',
+      },
+    },
+    h6: {
+      fontSize: '1rem',
+      fontWeight: 600,
+      '@media (min-width:600px)': {
+        fontSize: '1.125rem',
+      },
+    },
+    body1: {
+      fontSize: '1rem',
+      lineHeight: 1.6,
+      '@media (min-width:600px)': {
+        fontSize: '1.125rem',
+      },
+    },
+    body2: {
+      fontSize: '0.875rem',
+      lineHeight: 1.5,
+      '@media (min-width:600px)': {
+        fontSize: '1rem',
+      },
+    },
   },
+  spacing: 8, // Base spacing unit
   components: {
     MuiCssBaseline: {
       styleOverrides: {
@@ -152,13 +210,15 @@ function App() {
                 </Box>
               </Stack>
 
-              <Box sx={{ position: 'sticky', top: 0, zIndex: 1100 }}>
+              <Box sx={{ 
+                display: { xs: 'none', md: 'flex' },
+                flex: 1,
+                justifyContent: 'center',
+                mx: 4
+              }}>
                 <Stack
                   direction="row"
                   spacing={4}
-                  sx={{
-                    display: { xs: 'none', md: 'flex' }
-                  }}
                 >
                   {navigationItems.map((item) => (
                     <Button
@@ -200,7 +260,14 @@ function App() {
                 </Stack>
               </Box>
 
-              <Stack direction="row" spacing={1}>
+              <Stack 
+                direction="row" 
+                spacing={1}
+                sx={{
+                  flexShrink: 0,
+                  minWidth: 'fit-content'
+                }}
+              >
                 <IconButton 
                   color="inherit" 
                   onClick={() => window.open('https://github.com/VidyaAg', '_blank')}
@@ -272,7 +339,7 @@ export const Header = ({ children }: { children: React.ReactNode }) => (
   <Typography
     variant="h2"
     sx={{
-      mb: 4,
+      mb: { xs: 4, md: 6 },
       textAlign: 'center',
       '& span': {
         color: 'primary.main',
@@ -285,10 +352,10 @@ export const Header = ({ children }: { children: React.ReactNode }) => (
 
 export const Paragraph = ({ children }: { children: React.ReactNode }) => (
   <Typography
-    variant="h6"
+    variant="body1"
     sx={{
-      mb: 6,
-      lineHeight: 1.8,
+      mb: { xs: 4, md: 6 },
+      lineHeight: 1.6,
       maxWidth: '1000px',
       mx: 'auto',
       textAlign: 'center',

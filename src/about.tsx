@@ -18,7 +18,6 @@ const ExperienceCard = ({ title }: any) => (
             variant="h6"
             sx={{
                 color: 'white',
-                fontSize: '1.1rem',
                 textAlign: 'center',
             }}
         >
@@ -37,8 +36,10 @@ const About = () => {
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
-                px: { xs: 3, sm: 4, md: 6 },
-                height: 'calc(100vh - 64px)',
+                px: { xs: 2, sm: 3, md: 4, lg: 6 },
+                py: { xs: 4, md: 0 },
+                height: { xs: 'auto', md: 'calc(100vh - 64px)' },
+                minHeight: { xs: 'calc(100vh - 64px)', md: 'calc(100vh - 64px)' },
                 color: 'white',
             }}
         >
@@ -60,7 +61,7 @@ const About = () => {
                 sx={{
                     justifyContent: 'center',
                     alignItems: 'center',
-                    mb: 6,
+                    mb: { xs: 4, md: 6 },
                 }}
             >
                 <ExperienceCard title="+3 Years Development" />
